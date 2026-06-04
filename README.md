@@ -1,0 +1,26 @@
+# Weather Update  📝  
+ ## A application for checking weather of any place worldwide.
+
+ 
+## Tech Stack  
+
+**Client:** HTML, CSS  
+**Server:** JavaScripts
+
+## License  
+[MIT](https://choosealicense.com/licenses/mit/) 
+
+## Features  
+- shows date, day, year and time
+
+- No loging needed.
+
+- 
+## Demo  
+clone the repo. or click on the link below..!
+
+
+<img width="1899" height="1022" alt="Screenshot 2026-06-04 194029" src="https://github.com/user-attachments/assets/5e6b506a-08d7-4cef-bc10-8a7ddc1784ab" />
+ 
+
+
