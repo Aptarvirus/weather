@@ -1,0 +1,157 @@
+body{
+    margin:0;
+    height:100vh;
+    font-size : 130%;
+    font-weight: bold;
+    line-height: 1.7;
+    display:flex;
+    justify-content:center;
+    font-family: Segoe UI, Segoe WP, Arial, Sans-Serif;
+    background: #e2bbbb;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.container {
+    border-radius:50%;
+    background: linear-gradient(
+        to bottom,
+        rgb(73, 108, 168), 
+        rgb(139, 96, 210));
+    padding: 0 4em 6.5em;
+    margin: 9em auto 9 auto;
+    -webkit-filter: drop-shadow(0 1em 1em rgb(104, 76, 81));
+    filter: drop-shadow(0 1.5em 1.5em rgba(104, 76, 81));
+
+}
+
+header{
+    text-align:center;
+    text-decoration:#e2bbbb;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size:xx-large;
+    font-weight:700
+}   
+h2{
+    border-color:black;
+    border-bottom:0.26em;
+    margin-bottom :1.1em;
+    margin-top:1.5em;
+    text-align:center;
+     text-shadow: 2px 2px 4px rgba(7,5,8,10.6), 
+               4px 4px 8px rgba(137, 86, 86, 0.4); 
+transform: perspective(500px) rotateX(30deg)
+
+}
+.input{
+    background: linear-gradient(
+        to bottom,
+        rgb(73, 108, 168),  
+        rgb(139, 96, 210)  
+    );
+    border: none;           
+    color: white;           
+    padding: 10px;          
+    border-radius: 45%;    
+    width:82%;
+    border:none;
+    outline:none;
+    font-size:1.5rem;
+    text-align:center;
+    font-weight:bold;
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:1.5em;
+    padding:0.6em;
+    box-shadow:4px 4px 4px rgb(19, 18, 18),
+        inset -2px -2px 4px rgba(255,255,255,0.3);
+
+
+}
+input::placeholder{
+    color:rgb(0, 0, 0.6);
+    opacity: 1;
+    font-weight:bold;
+    border-color:black;
+    /* border-bottom:0.26em; */
+    /* margin-bottom :1.1em; */
+    /* margin-top:1.5em; */
+    text-align:center;
+    text-shadow: 2px 2px 4px rgba(7,5,8,0.6), 
+               4px 4px 8px rgba(137, 86, 86, 0.4); 
+    transform: perspective(500px) rotateX(30deg);
+}
+.main-weather{
+    display:none;
+    line-height:2.3rem;
+    height:32vh;
+    text-align:center;
+    color:rgb(0, 139, 93);
+    font-weight:bold;
+}
+.temperature{
+    margin: 20px;
+    Font-size:20pt;
+
+}
+#city {
+  color: #0f0f0f; 
+  text-shadow: 2px 2px 4px rgba(7,5,8,0.6), 
+               4px 4px 8px rgba(137, 86, 86, 0.4); 
+    transform: perspective(500px) rotateX(30deg);
+}
+
+#temperature {
+    text-shadow: 2px 2px 4px rgba(7,5,8,0.6), 
+               4px 4px 8px rgba(137, 86, 86, 0.4); 
+    transform: perspective(500px) rotateX(30deg);
+  color: #040404; 
+}
+
+#min-max {
+    text-shadow: 2px 2px 4px rgba(7,5,8,0.6), 
+               4px 4px 8px rgba(137, 86, 86, 0.4); 
+    transform: perspective(500px) rotateX(30deg);
+  color: #000000; 
+}
+
+#weather-type {
+    text-shadow: 2px 2px 4px rgba(7,5,8,0.6), 
+               4px 4px 8px rgba(137, 86, 86, 0.4); 
+    transform: perspective(500px) rotateX(30deg);
+  color: #000000; 
+}
+
+#date {
+    text-shadow: 2px 2px 4px rgba(7,5,8,0.6), 
+               4px 4px 8px rgba(137, 86, 86, 0.4); 
+    transform: perspective(500px) rotateX(30deg);
+  color: #000000; 
+}
+footer{
+    color:#040404;
+    text-align: center;
+    padding: 2rem;
+    color: #070707;
+    font-size: 0.8rem;
+}
+h5{
+      color:#040404;
+    text-align: center;
+    padding: 2rem;
+    color: #070707;
+    font-size: 0.8rem;
+}
+.github-icon {
+  width: 60px;
+  height: auto;
+}
+svg{
+  width: 30px;
+  height: auto;
+}
+
+
