@@ -24,6 +24,9 @@ https://aptarvirus.github.io/weather/
 
 <img width="1899" height="1022" alt="Screenshot 2026-06-04 194029" src="https://github.com/user-attachments/assets/5e6b506a-08d7-4cef-bc10-8a7ddc1784ab" />
 
+### Ai
+I ued AI to understand the concept all the codes are written by me.
+
  
 
 
