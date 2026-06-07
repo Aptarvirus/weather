@@ -8,12 +8,6 @@ const Input = document.getElementById('input');
 Input.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
         getWeather(Input.value);
-
-        const date = moment();
-        document.getElementById("date").innerHTML = date.format(
-            'Do MMM YYYY dddd, h:mm:ss'
-        );
-
         document.querySelector('.main-weather').style.display = 'block';
     }
 });
@@ -40,20 +34,29 @@ function showWeather(details) {
     let weatherType = document.getElementById('weather-type');
     weatherType.innerHTML = `${details.weather[0].main}`;
 
-const offsetminutes = details.timezone/60;
-const cityTime = moment.utc().utc0ffset(offsetMinutes);
-document.getElementById("date").innerHTML = cityTime.format("Do MMM YYYY dddd, h:mm:ss"); 
+    // Start updating time with timezone
+    updateWeatherWithTimezone(details);
 }
-let timerInterval;
-function shoWeather(details){
-    if (timerInterval) clearInterval(timeInterval);
-    const offsetMinutes = details.timezone/60;
 
+function updateWeatherWithTimezone(details) {
+    // Clear any existing interval
+    if (window.timerInterval) {
+        clearInterval(window.timerInterval);
+    }
+
+    // Get timezone offset in seconds from API and convert to minutes
+    const offsetMinutes = details.timezone / 60;
+
+    // Update time immediately
     const updateTime = () => {
-
-        const cityTime= moment.utc().utc0ffset(offsetMinutes)
-
+        // Create a moment object in UTC and then apply the timezone offset
+        const cityTime = moment.utc().utcOffset(offsetMinutes);
+        document.getElementById("date").innerHTML = cityTime.format("Do MMM YYYY dddd, h:mm:ss A");
     };
+
+    // Call once immediately
     updateTime();
-    timerInterval = setInterval(updateTime, 1000);
+
+    // Then update every second
+    window.timerInterval = setInterval(updateTime, 1000);
 }
