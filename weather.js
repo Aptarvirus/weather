@@ -8,12 +8,6 @@ const Input = document.getElementById('input');
 Input.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
         getWeather(Input.value);
-
-        const date = moment();
-        document.getElementById("date").innerHTML = date.format(
-            'Do MMM YYYY dddd, h:mm:ss'
-        );
-
         document.querySelector('.main-weather').style.display = 'block';
     }
 });
@@ -39,4 +33,11 @@ function showWeather(details) {
 
     let weatherType = document.getElementById('weather-type');
     weatherType.innerHTML = `${details.weather[0].main}`;
+
+    // Display time in the searched city's timezone
+    const timezoneOffset = details.timezone; // seconds from UTC
+    const date = moment().utcOffset(timezoneOffset / 60); // convert to minutes
+    document.getElementById("date").innerHTML = date.format(
+        'Do MMM YYYY dddd, h:mm:ss'
+    );
 }
