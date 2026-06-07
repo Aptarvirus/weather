@@ -23,16 +23,16 @@ function showWeather(details) {
     console.log(details);
 
     let city = document.getElementById('city');
-    city.innerHTML = `${details.name}, ${details.sys.country}`;
+    city.innerHTML = `📍 <strong>${details.name}, ${details.sys.country}</strong>`;
 
     let temperature = document.getElementById('temperature');
-    temperature.innerHTML = `${Math.round(details.main.temp)}°C`;
+    temperature.innerHTML = `🌡️ Temperature: <strong>${Math.round(details.main.temp)}°C</strong>`;
 
     let mainMax = document.getElementById('min-max');
-    mainMax.innerHTML = `${Math.round(details.main.temp_min)}°C (Min) and ${Math.round(details.main.temp_max)}°C (Max)`;
+    mainMax.innerHTML = `🔄 <strong>${Math.round(details.main.temp_min)}°C</strong> (Min) and <strong>${Math.round(details.main.temp_max)}°C</strong> (Max)`;
 
     let weatherType = document.getElementById('weather-type');
-    weatherType.innerHTML = `${details.weather[0].main}`;
+    weatherType.innerHTML = `☁️ Weather: <strong>${details.weather[0].main}</strong> - ${details.weather[0].description}`;
 
     // Start updating time with timezone
     updateWeatherWithTimezone(details);
@@ -44,24 +44,28 @@ function updateWeatherWithTimezone(details) {
         clearInterval(window.timerInterval);
     }
 
-
-    const offsetMinutes = details.timezone / 60;
-
-
-
+    // Get timezone offset in seconds from API and convert to minutes
+    const offsetSeconds = details.timezone;
     
+    // Get city coordinates for timezone lookup
+    const lat = details.coord.lat;
+    const lon = details.coord.lon;
+
     const updateTime = () => {
-    
-        const cityTime = moment.utc().utcOffset(offsetMinutes);
-        document.getElementById("date").innerHTML = cityTime.format("Do MMM YYYY dddd, h:mm:ss A");
+        // Create UTC time and add the timezone offset
+        const cityTime = moment.utc().add(offsetSeconds, 'seconds');
+        document.getElementById("date").innerHTML = `🕐 <strong>${cityTime.format("Do MMM YYYY, h:mm:ss A")}</strong>`;
     };
 
+    // Get timezone name (optional - uses offset if name not available)
+    const offsetHours = offsetSeconds / 3600;
+    const sign = offsetHours >= 0 ? '+' : '';
+    const tzDisplay = `UTC${sign}${(offsetHours).toFixed(1)}`;
+    document.getElementById("timezone").innerHTML = `🌍 Timezone: <strong>${tzDisplay}</strong>`;
 
-
-    
+    // Update time immediately
     updateTime();
 
-
-    
+    // Update time every second
     window.timerInterval = setInterval(updateTime, 1000);
 }
