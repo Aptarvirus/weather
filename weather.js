@@ -1,5 +1,5 @@
 const api = {
-    key: '3724d4ec949c7b455c91073dad9d140',
+    key: '3724d4ec949c7b455c91073dad9d1401',
     base: 'https://api.openweathermap.org/data/2.5/weather'
 };
 
@@ -8,6 +8,12 @@ const Input = document.getElementById('input');
 Input.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
         getWeather(Input.value);
+
+        const date = moment();
+        document.getElementById("date").innerHTML = date.format(
+            'Do MMM YYYY dddd, h:mm:ss'
+        );
+
         document.querySelector('.main-weather').style.display = 'block';
     }
 });
@@ -19,15 +25,8 @@ function getWeather(city) {
         .catch(err => console.error("Error fetching weather:", err));
 }
 
-// function showWeather(details) {
-    // console.log(details);
-// Convert seconds to minutes for moment.utcOffset()
-// const offsetMinutes = timezoneOffset / 60;
-
-// Create a UTC moment, then set the offset
-const localTime = moment.utc(details.dt * 1000).utcOffset(offsetMinutes);
-
-document.getElementById("date").innerHTML = localTime.format('Do MMM YYYY dddd, h:mm:ss');
+function showWeather(details) {
+    console.log(details);
 
     let city = document.getElementById('city');
     city.innerHTML = `${details.name}, ${details.sys.country}`;
@@ -41,10 +40,20 @@ document.getElementById("date").innerHTML = localTime.format('Do MMM YYYY dddd, 
     let weatherType = document.getElementById('weather-type');
     weatherType.innerHTML = `${details.weather[0].main}`;
 
-    // Display time in the searched city's timezone
-    const timezoneOffset = details.timezone; // seconds from UTC
-    const localTime = moment.unix(details.dt).utcOffset(timezoneOffset / 60); // Use the server's timestamp with timezone offset
-    document.getElementById("date").innerHTML = localTime.format(
-        'Do MMM YYYY dddd, h:mm:ss'
-    );
+const offsetminutes = details.timezone/60;
+const cityTime = moment.utc().utc0ffset(offsetMinutes);
+document.getElementById("date").innerHTML = cityTime.format("Do MMM YYYY dddd, h:mm:ss"); 
+}
+let timerInterval;
+function shoWeather(details){
+    if (timerInterval) clearInterval(timeInterval);
+    const offsetMinutes = details.timezone/60;
+
+    const updateTime = () => {
+
+        const cityTime= moment.utc().utc0ffset(offsetMinutes)
+
+    };
+    updateTime();
+    timerInterval = setInterval(updateTime, 1000);
 }
