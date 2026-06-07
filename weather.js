@@ -19,8 +19,15 @@ function getWeather(city) {
         .catch(err => console.error("Error fetching weather:", err));
 }
 
-function showWeather(details) {
-    console.log(details);
+// function showWeather(details) {
+    // console.log(details);
+// Convert seconds to minutes for moment.utcOffset()
+// const offsetMinutes = timezoneOffset / 60;
+
+// Create a UTC moment, then set the offset
+const localTime = moment.utc(details.dt * 1000).utcOffset(offsetMinutes);
+
+document.getElementById("date").innerHTML = localTime.format('Do MMM YYYY dddd, h:mm:ss');
 
     let city = document.getElementById('city');
     city.innerHTML = `${details.name}, ${details.sys.country}`;
