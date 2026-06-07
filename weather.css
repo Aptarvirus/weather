@@ -15,7 +15,7 @@ body{
     -moz-osx-font-smoothing: grayscale;
 }
 .container {
-    border-radius:50%;
+    border-radius:90%;
     background: linear-gradient(
         to bottom,
         rgb(73, 108, 168), 
