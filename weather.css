@@ -131,12 +131,12 @@ input::placeholder{
     transform: perspective(500px) rotateX(30deg);
   color: #000000; 
 }
-footer{
-    color:#040404;
-    text-align: center;
-    padding: 2rem;
-    color: #070707;
-    font-size: 0.8rem;
+/* footer{ */
+    /* color:#040404; */
+    /* text-align: center; */
+    /* padding: 2rem; */
+    /* color: #070707; */
+    /* font-size: 0.8rem; */
 }
 h5{
       color:#040404;
