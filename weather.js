@@ -34,17 +34,15 @@ function showWeather(details) {
     let weatherType = document.getElementById('weather-type');
     weatherType.innerHTML = `☁️ Weather: <strong>${details.weather[0].main}</strong> - ${details.weather[0].description}`;
 
-    // Start updating time with timezone
     updateWeatherWithTimezone(details);
 }
 
 function updateWeatherWithTimezone(details) {
-    // Clear any existing interval
+  
     if (window.timerInterval) {
         clearInterval(window.timerInterval);
     }
 
-    // Get timezone offset in seconds from API and convert to minutes
     const offsetSeconds = details.timezone;
     
     // Get city coordinates for timezone lookup
@@ -52,20 +50,19 @@ function updateWeatherWithTimezone(details) {
     const lon = details.coord.lon;
 
     const updateTime = () => {
-        // Create UTC time and add the timezone offset
+
         const cityTime = moment.utc().add(offsetSeconds, 'seconds');
         document.getElementById("date").innerHTML = `🕐 <strong>${cityTime.format("Do MMM YYYY, h:mm:ss A")}</strong>`;
     };
 
-    // Get timezone name (optional - uses offset if name not available)
     const offsetHours = offsetSeconds / 3600;
     const sign = offsetHours >= 0 ? '+' : '';
     const tzDisplay = `UTC${sign}${(offsetHours).toFixed(1)}`;
     document.getElementById("timezone").innerHTML = `🌍 Timezone: <strong>${tzDisplay}</strong>`;
 
-    // Update time immediately
+    // Update  immediately
     updateTime();
 
-    // Update time every second
+    // Update  every second
     window.timerInterval = setInterval(updateTime, 1000);
 }
