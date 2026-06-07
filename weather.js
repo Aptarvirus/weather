@@ -44,19 +44,24 @@ function updateWeatherWithTimezone(details) {
         clearInterval(window.timerInterval);
     }
 
-    // Get timezone offset in seconds from API and convert to minutes
+
     const offsetMinutes = details.timezone / 60;
 
-    // Update time immediately
+
+
+    
     const updateTime = () => {
-        // Create a moment object in UTC and then apply the timezone offset
+    
         const cityTime = moment.utc().utcOffset(offsetMinutes);
         document.getElementById("date").innerHTML = cityTime.format("Do MMM YYYY dddd, h:mm:ss A");
     };
 
-    // Call once immediately
+
+
+    
     updateTime();
 
-    // Then update every second
+
+    
     window.timerInterval = setInterval(updateTime, 1000);
 }
