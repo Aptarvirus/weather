@@ -36,7 +36,7 @@ function showWeather(details) {
 
     // Display time in the searched city's timezone
     const timezoneOffset = details.timezone; // seconds from UTC
-    const date = moment().utcOffset(timezoneOffset / 60); // convert to minutes
+    const date = moment.utc().utcOffset(timezoneOffset / 60); // get UTC time, then apply timezone offset
     document.getElementById("date").innerHTML = date.format(
         'Do MMM YYYY dddd, h:mm:ss'
     );
